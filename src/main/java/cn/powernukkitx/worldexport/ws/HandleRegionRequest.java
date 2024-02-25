@@ -37,9 +37,10 @@ public class HandleRegionRequest {
                         BlockVector3 current = new BlockVector3();
                         int offsetY = section.getY() << 4;
                         for (int xx = 0; xx < 16; xx++) {
-                            current.x = (chunk.getX() << 4) + xx;
+                            //           Region          Chuck
+                            current.x = (x << 5) + (chunk.getX() << 4) + xx;
                             for (int zz = 0; zz < 16; zz++) {
-                                current.z = (chunk.getZ() << 4) + zz;
+                                current.z = (z << 5) + (chunk.getZ() << 4) + zz;
                                 for (int y = 0; y < 16; y++) {
                                     current.y = offsetY + y;
                                     Block block = section.getBlockState(xx, y, zz).getBlockRepairing(provider.getLevel(), current, 0);
